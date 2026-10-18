@@ -359,3 +359,9 @@ npm run dev   # http://localhost:5173, proxies /api to localhost:8000
 - **Login always fails**: verify `SECRET_KEY`/`REFRESH_SECRET_KEY` are set in `.env` and the backend container was restarted after any `.env` change (env vars are read at container start, not live-reloaded).
 - **No emails sending**: expected until the `SMTP_*` fields above are filled in — check `docker exec ironbandit-api tail -50 /var/log/ironbandit/app.log` for the specific silently-caught error once SMTP is configured.
 - **External proxy can't reach the app**: confirm `docker-compose.yml`'s frontend port mapping is `0.0.0.0:80:80` (not `127.0.0.1:80:80`) and that the LXC's firewall allows the proxy's network in.
+
+## License
+
+Copyright (C) 2026 CrashBandit82
+
+IronBandit is free software: you can redistribute it and/or modify it under the terms of the **GNU Affero General Public License v3.0** as published by the Free Software Foundation. If you run a modified version as a network service, you must make its source code available to its users. See [LICENSE](LICENSE) for the full text.
