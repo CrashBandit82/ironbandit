@@ -1,0 +1,17 @@
+.env
+
+# Database backups (contain user data)
+backups/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+frontend/dist/
+
+# OS
+.DS_Store

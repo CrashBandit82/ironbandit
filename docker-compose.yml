@@ -1,0 +1,74 @@
+services:
+  postgres:
+    # Bereits sinnvoll gepinnt: "16-alpine" springt nie auf Postgres 17 (Major-
+    # Versionen sind eigene Tags), erhält aber weiterhin 16.x-Patches automatisch.
+    image: postgres:16-alpine
+    container_name: ironbandit-db
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ironbandit-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: ironbandit-api
+    volumes:
+      # App-Log auf den Host — fail2ban wertet Auth-Fehlversuche daraus aus
+      - ./logs/backend:/var/log/ironbandit
+      # Avatar-Uploads persistent halten — überlebt den nächtlichen Auto-Update-Rebuild
+      - ./uploads:/opt/ironbandit/uploads
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - SECRET_KEY=${SECRET_KEY}
+      - REFRESH_SECRET_KEY=${REFRESH_SECRET_KEY}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost}
+      - SMTP_HOST=${SMTP_HOST:-}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASSWORD=${SMTP_PASSWORD:-}
+      - SMTP_FROM_ADDRESS=${SMTP_FROM_ADDRESS:-}
+      - NOTIFY_EMAIL=${NOTIFY_EMAIL:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: ironbandit-web
+    volumes:
+      # Access-Log als Datei für fail2ban; Bann-Liste als Verzeichnis-Mount
+      # (Verzeichnis statt Einzeldatei, damit sed/mv auf dem Host im Container
+      # sichtbar bleiben — Einzeldatei-Mounts hängen am alten Inode fest)
+      - ./logs/nginx:/var/log/nginx-host
+      - ./fail2ban:/etc/nginx/fail2ban:ro
+    ports:
+      # Bind explicitly to all interfaces so the external Nginx Proxy Manager
+      # (in a different VLAN/network) can reach this container's port 80.
+      - "0.0.0.0:80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  ironbandit-db-data:
+    driver: local

@@ -1,0 +1,54 @@
+{
+  "id": "/",
+  "name": "IronBandit — Trainingstagebuch",
+  "short_name": "IronBandit",
+  "description": "Dein Trainingstagebuch — Workouts, Gewicht und Trainingspläne tracken",
+  "lang": "de",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "categories": ["health", "fitness", "lifestyle", "sports"],
+  "icons": [
+    {
+      "src": "/icon-192.png?v=2",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png?v=2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-192.png?v=2",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512-maskable.png?v=2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Training starten",
+      "short_name": "Training",
+      "url": "/",
+      "icons": [{ "src": "/icon-192.png?v=2", "sizes": "192x192" }]
+    },
+    {
+      "name": "App installieren",
+      "short_name": "Installieren",
+      "url": "/app-installieren"
+    }
+  ]
+}

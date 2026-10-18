@@ -1,0 +1,35 @@
+# IronBandit - Frontend Builder & Nginx
+
+# Auf Minor-Version gepinnt statt "18-alpine" (würde sonst irgendwann
+# klammheimlich auf eine neue Alpine-Basis springen). Patches innerhalb von
+# 18.20.x kommen weiterhin automatisch rein.
+FROM node:18.20-alpine as builder
+
+WORKDIR /app
+
+# Lockfile mitkopieren und `npm ci` statt `npm install`: der nächtliche
+# Auto-Update-Rebuild (security/auto-update.sh) baute sonst jedes Mal gegen neu
+# aufgelöste "^"-Ranges — unbeaufsichtigt und nicht reproduzierbar. `npm ci`
+# installiert exakt den Stand aus package-lock.json.
+COPY frontend/package.json frontend/package-lock.json ./
+
+RUN npm ci
+
+COPY frontend/ .
+
+RUN npm run build
+
+# Serve with Nginx (plain HTTP — TLS/domain routing is handled by an external
+# Nginx Proxy Manager in front of this container, not by this container itself)
+# Auf Minor-Version gepinnt statt "alpine" (würde sonst irgendwann klammheimlich
+# auf eine neue nginx-Minor-Version springen). Patches innerhalb von 1.31.x
+# kommen weiterhin automatisch rein.
+FROM nginx:1.31-alpine
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
