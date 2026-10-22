@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">Keine Verbindung</string>
+    <string name="offline_text">IronBandit konnte nicht geladen werden. Bitte Internetverbindung prüfen.</string>
+    <string name="retry">Erneut versuchen</string>
+    <string name="saved">Datei gespeichert</string>
+    <string name="save_failed">Datei konnte nicht gespeichert werden</string>
+</resources>

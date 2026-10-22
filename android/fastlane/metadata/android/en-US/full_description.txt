@@ -1,0 +1,13 @@
+IronBandit is a free digital workout log for strength training. This app opens the IronBandit web app at <a href="https://ironbandit.at">ironbandit.at</a>; an account is required.
+
+<b>Features</b>
+<ul>
+<li>Own exercises and training plans, CSV import and export</li>
+<li>Log sets live in the gym, screen stays awake during training</li>
+<li>Rest timer and workout duration</li>
+<li>History, personal records, charts and weekly overview</li>
+<li>Body-weight tracker and notes per exercise</li>
+<li>German and English, light and dark theme</li>
+</ul>
+
+The app and the server software are free software under the GNU AGPL-3.0.

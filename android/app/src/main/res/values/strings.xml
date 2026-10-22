@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">IronBandit</string>
+    <string name="offline_title">No connection</string>
+    <string name="offline_text">IronBandit could not be loaded. Please check your internet connection.</string>
+    <string name="retry">Try again</string>
+    <string name="saved">File saved</string>
+    <string name="save_failed">Could not save file</string>
+</resources>
