@@ -1,0 +1,1 @@
+New: native offline app without an account. All data stays on the device (no internet permission). Workout plans, set logging with prefill, rest timer with notification, weekly overview, body weight, backup as a file. The CSV export of the former web app can be imported.

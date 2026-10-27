@@ -1,8 +1,0 @@
-# Nur für die Testausführung — bewusst NICHT in requirements.txt, damit das
-# Produktiv-Image (Dockerfile.backend installiert nur requirements.txt) keine
-# Testwerkzeuge mitschleppt.
-#
-#   pip install -r requirements.txt -r requirements-dev.txt
-#   pytest backend/tests -q
--r requirements.txt
-pytest==8.4.2

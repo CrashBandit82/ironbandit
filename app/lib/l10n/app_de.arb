@@ -1,0 +1,472 @@
+{
+  "@@locale": "de",
+  "appName": "IronBandit",
+  "tabTraining": "Training",
+  "tabWeight": "Gewicht",
+  "tabMore": "Mehr",
+  "cancel": "Abbrechen",
+  "save": "Speichern",
+  "delete": "Löschen",
+  "edit": "Bearbeiten",
+  "remove": "Entfernen",
+  "ok": "OK",
+  "more": "Mehr",
+  "clear": "Leeren",
+  "all": "Alle",
+  "none": "Keine",
+  "retry": "Erneut versuchen",
+  "errorGeneric": "Etwas ist schiefgelaufen.",
+  "requiredField": "Pflichtfeld",
+  "invalidNumber": "Bitte eine gültige Zahl eingeben",
+  "fileSaved": "Datei gespeichert",
+  "reorder": "Verschieben",
+  "trainingTitle": "Training",
+  "today": "Heute",
+  "yesterday": "Gestern",
+  "prevDay": "Vorheriger Tag",
+  "nextDay": "Nächster Tag",
+  "pickDay": "Tag wählen",
+  "todayEntries": "Heutige Übungen",
+  "entries": "Übungen",
+  "noEntries": "Noch nichts eingetragen. Starte einen Plan oder füge eine Übung hinzu.",
+  "noEntriesDay": "An diesem Tag ist nichts eingetragen.",
+  "noOtherEntries": "Keine weiteren Übungen außerhalb des Trainings.",
+  "noValuesYet": "Noch keine Werte",
+  "addExercise": "Übung",
+  "deleteEntryConfirm": "„{name}“ von diesem Tag löschen? Die Sätze gehen verloren.",
+  "@deleteEntryConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "volume": "Volumen",
+  "exercisesCount": "{count, plural, =1{1 Übung} other{{count} Übungen}}",
+  "@exercisesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setsCount": "{count, plural, =1{1 Satz} other{{count} Sätze}}",
+  "@setsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "setsDone": "{count, plural, =1{1 Satz erledigt} other{{count} Sätze erledigt}}",
+  "@setsDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "currentWorkout": "Aktuelles Training",
+  "elapsed": "Dauer",
+  "progress": "Fortschritt",
+  "progressDone": "{done} von {total} erledigt",
+  "@progressDone": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "allDone": "Alle Übungen erledigt!",
+  "completed": "Abgeschlossen",
+  "finishWorkout": "Training abschließen",
+  "finishOpenConfirm": "Noch nicht alle Übungen sind abgehakt. Training trotzdem abschließen?",
+  "workoutFinished": "Training abgeschlossen – Dauer {duration}",
+  "@workoutFinished": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "keepTraining": "Weiter trainieren",
+  "cancelWorkout": "Training abbrechen",
+  "cancelWorkoutConfirm": "Training abbrechen? Die Dauer wird nicht gespeichert und Übungen ohne Eintrag werden entfernt. Bereits erfasste Sätze bleiben erhalten.",
+  "workoutCancelled": "{count, plural, =0{Training abgebrochen} =1{Training abgebrochen – 1 leere Übung entfernt} other{Training abgebrochen – {count} leere Übungen entfernt}}",
+  "@workoutCancelled": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thisWeek": "Diese Woche",
+  "goalShort": "Ziel: {goal}",
+  "@goalShort": {
+    "placeholders": {
+      "goal": {
+        "type": "int"
+      }
+    }
+  },
+  "workouts": "Trainings",
+  "vsLastWeek": "ggü. Vorwoche",
+  "trained": "trainiert",
+  "notTrained": "nicht trainiert",
+  "weeklyGoal": "Wochenziel",
+  "workoutsPerWeek": "Trainings pro Woche",
+  "stagnationTitle": "Beobachten",
+  "stagnationSub": "Übungen ohne Steigerung in letzter Zeit",
+  "stagnationWeight": "{name}: seit {weeks, plural, =1{1 Woche} other{{weeks} Wochen}} bei {value} kg",
+  "@stagnationWeight": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "weeks": {
+        "type": "int"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "stagnationVolume": "{name}: Volumen seit {weeks, plural, =1{1 Woche} other{{weeks} Wochen}} stabil",
+  "@stagnationVolume": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "weeks": {
+        "type": "int"
+      }
+    }
+  },
+  "stagnationHint": "Vielleicht Zeit für kleine Änderungen: Gewicht, Wiederholungen oder eine Deload-Woche.",
+  "lastTraining": "Letztes Training",
+  "lastTime": "letztes Mal",
+  "setLabel": "Satz {n}",
+  "@setLabel": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteSet": "Satz löschen",
+  "weightKgLabel": "Gewicht (kg)",
+  "repsLabel": "Wdh.",
+  "repsRequired": "Bitte Wiederholungen eintragen",
+  "addSet": "Satz eintragen",
+  "durationLabel": "Dauer (min)",
+  "distanceLabel": "Distanz (km)",
+  "noteLabel": "Notiz zur Übung",
+  "notePlaceholder": "Bleibt für jedes Training, z. B. Sitz Stufe 4",
+  "noteSaved": "Gespeichert",
+  "completeExercise": "Übung abschließen",
+  "reopenExercise": "Wieder öffnen",
+  "prevExercise": "Vorherige Übung",
+  "nextExercise": "Nächste Übung",
+  "exercisePosition": "Übung {current} von {total}",
+  "@exercisePosition": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "restLabel": "Pause",
+  "restDone": "Pause vorbei!",
+  "restSkip": "Pause beenden",
+  "restShorter": "15 Sekunden kürzer",
+  "restLonger": "15 Sekunden länger",
+  "restAfterSet": "Pause nach dem Satz: {time}",
+  "@restAfterSet": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "restDuration": "Pausendauer",
+  "restDurationSub": "Standard: {time}",
+  "@restDurationSub": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "saveAsDefault": "Als Standard speichern",
+  "restDefaultSaved": "Standard-Pausendauer gespeichert",
+  "restNotify": "Benachrichtigung am Pausenende",
+  "restNotifySub": "Mit Vibration, auch wenn die App im Hintergrund ist. Eine gekoppelte Uhr vibriert mit.",
+  "restNotifyTitle": "Pause vorbei",
+  "restNotifyBody": "{exercise} – Satz {n}",
+  "@restNotifyBody": {
+    "placeholders": {
+      "exercise": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "restChannel": "Pausentimer",
+  "pickExerciseTitle": "Übung wählen",
+  "searchExercise": "Übung suchen …",
+  "createExerciseNamed": "„{name}“ neu anlegen",
+  "@createExerciseNamed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "newExercise": "Neue Übung",
+  "editExercise": "Übung bearbeiten",
+  "noExercises": "Noch keine Übungen.",
+  "exerciseName": "Name",
+  "exerciseExists": "Diese Übung gibt es schon",
+  "category": "Kategorie",
+  "muscleGroup": "Muskelgruppe (optional)",
+  "equipment": "Gerät (optional)",
+  "cardioSwitch": "Ausdauer",
+  "cardioSwitchSub": "Dauer und Distanz statt Sätzen",
+  "catPush": "Drücken",
+  "catPull": "Ziehen",
+  "catLegs": "Beine",
+  "catCore": "Rumpf",
+  "catCardio": "Ausdauer",
+  "deleteExerciseConfirm": "Übung „{name}“ löschen? Der Verlauf behält den Namen.",
+  "@deleteExerciseConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteExerciseInPlans": "{count, plural, =1{Sie wird auch aus 1 Plan entfernt.} other{Sie wird auch aus {count} Plänen entfernt.}}",
+  "@deleteExerciseInPlans": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "plansTitle": "Trainingspläne",
+  "noPlans": "Noch keine Trainingspläne",
+  "noPlansHint": "Lege einen Plan an: nur Übungen und Reihenfolge. Sätze, Gewicht und Wiederholungen trägst du live im Training ein.",
+  "start": "Start",
+  "newPlan": "Neuer Plan",
+  "editPlan": "Plan bearbeiten",
+  "planName": "Name des Plans",
+  "planNameHint": "z. B. Push Day",
+  "planHint": "Nur Übungen und Reihenfolge. Tippe eine Übung an für eine Notiz, zum Verschieben am Griff ziehen.",
+  "planNoteHint": "Notiz im Plan, z. B. langsam ablassen",
+  "planSaved": "Plan gespeichert",
+  "planEmpty": "Der Plan enthält noch keine Übungen",
+  "deletePlanConfirm": "Plan „{name}“ löschen? Bisherige Trainings bleiben erhalten.",
+  "@deletePlanConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "importPlans": "Pläne importieren (CSV)",
+  "exportPlans": "Pläne exportieren (CSV)",
+  "samplePlans": "Beispiel-CSV speichern",
+  "importPlansTitle": "Pläne importieren",
+  "planExists": "Ein Plan mit diesem Namen existiert schon – er wird zusätzlich angelegt.",
+  "importNewExercises": "{count, plural, =1{1 Übung wird neu angelegt:} other{{count} Übungen werden neu angelegt:}}",
+  "@importNewExercises": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importSkippedRows": "{count, plural, =1{1 Zeile wird übersprungen:} other{{count} Zeilen werden übersprungen:}}",
+  "@importSkippedRows": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "line": "Zeile {n}",
+  "@line": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "importConfirm": "{count, plural, =1{1 Plan importieren} other{{count} Pläne importieren}}",
+  "@importConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "plansImported": "{count, plural, =1{1 Plan importiert} other{{count} Pläne importiert}}",
+  "@plansImported": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csvEmpty": "Die Datei enthält keine Daten",
+  "csvTooBig": "Die Datei ist größer als {kb} KB",
+  "@csvTooBig": {
+    "placeholders": {
+      "kb": {
+        "type": "String"
+      }
+    }
+  },
+  "csvBinary": "Das ist keine CSV-Datei",
+  "csvNotUtf8": "Die Datei ist nicht UTF-8-kodiert – bitte als UTF-8-CSV speichern",
+  "csvUnreadable": "Die Datei konnte nicht als CSV gelesen werden",
+  "csvMissingColumns": "Kopfzeile unvollständig, es fehlt: {columns}",
+  "@csvMissingColumns": {
+    "placeholders": {
+      "columns": {
+        "type": "String"
+      }
+    }
+  },
+  "csvUnknownColumns": "Unbekannte Spalte(n): {columns}",
+  "@csvUnknownColumns": {
+    "placeholders": {
+      "columns": {
+        "type": "String"
+      }
+    }
+  },
+  "csvDuplicateColumns": "Die Kopfzeile enthält doppelte Spalten",
+  "csvTooManyRows": "Die Datei hat mehr als {n} Zeilen",
+  "@csvTooManyRows": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "csvTooManyPlans": "Die Datei enthält mehr als {n} Pläne",
+  "@csvTooManyPlans": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "csvNoValidRows": "Die Datei enthält keine gültigen Zeilen",
+  "rowPlanNameEmpty": "Planname fehlt",
+  "rowPlanNameTooLong": "Planname zu lang",
+  "rowPlanNameInvalid": "Planname enthält unerlaubte Zeichen",
+  "rowExerciseNameEmpty": "Übungsname fehlt",
+  "rowExerciseNameTooLong": "Übungsname zu lang",
+  "rowExerciseNameInvalid": "Übungsname enthält unerlaubte Zeichen",
+  "rowOrderNotNumber": "order_index ist keine ganze Zahl",
+  "rowOrderOutOfRange": "order_index außerhalb von 0–10000",
+  "rowNotesTooLong": "Notiz länger als 500 Zeichen",
+  "rowTooManyItems": "mehr als 200 Übungen im Plan",
+  "weightTitle": "Körpergewicht",
+  "weightToday": "Gewicht eintragen",
+  "weightKg": "Gewicht",
+  "weightSaved": "Gewicht gespeichert",
+  "weightCurrent": "Aktuell",
+  "weightStart": "Start",
+  "weightTrend": "Trend 7 Tage",
+  "weightChartTitle": "Verlauf",
+  "weightChartMin": "Mindestens 2 Einträge für den Verlauf nötig",
+  "weightEntries": "Einträge",
+  "weightDeleteConfirm": "Eintrag vom {date} löschen?",
+  "@weightDeleteConfirm": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "localDataInfo": "Alle Daten bleiben auf diesem Gerät. Kein Konto, keine Verbindung ins Internet.",
+  "trainingSettings": "Training",
+  "appearance": "Darstellung",
+  "themeSystem": "System",
+  "themeLight": "Hell",
+  "themeDark": "Dunkel",
+  "dataTitle": "Daten",
+  "backupTitle": "Sicherung speichern",
+  "backupSub": "Alle Daten als JSON-Datei, z. B. für ein neues Handy",
+  "backupFilePrefix": "ironbandit_sicherung",
+  "backupSaved": "Sicherung gespeichert",
+  "restoreTitle": "Sicherung wiederherstellen",
+  "restoreSub": "Ersetzt alle Daten auf diesem Gerät",
+  "restoreConfirm": "Sicherung{date} wiederherstellen? Alle aktuellen Daten auf diesem Gerät werden ersetzt.",
+  "@restoreConfirm": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreAction": "Wiederherstellen",
+  "restoreDone": "Sicherung wiederhergestellt",
+  "backupFrom": "vom {date}",
+  "@backupFrom": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "backupInvalid": "Das ist keine gültige IronBandit-Sicherung",
+  "backupTooNew": "Die Sicherung stammt aus einer neueren App-Version – bitte erst die App aktualisieren",
+  "historyImportTitle": "Trainings aus CSV übernehmen",
+  "historyImportSub": "Export der IronBandit-Web-App oder dieser App; vorhandene Einträge bleiben",
+  "historyImported": "{logs} Übungen mit {sets} Sätzen und {weights} Gewichtseinträge übernommen",
+  "@historyImported": {
+    "placeholders": {
+      "logs": {
+        "type": "int"
+      },
+      "sets": {
+        "type": "int"
+      },
+      "weights": {
+        "type": "int"
+      }
+    }
+  },
+  "historyNothingNew": "Nichts Neues – alles war schon da",
+  "historyInvalid": "Das ist kein IronBandit-CSV-Export",
+  "exportTitle": "Als CSV exportieren",
+  "exportSub": "Trainings und Körpergewicht für Tabellen",
+  "exportSaved": "Export gespeichert",
+  "deleteAllData": "Alle Daten löschen",
+  "deleteAllDataSub": "Trainings, Pläne, Übungen und Gewicht auf diesem Gerät",
+  "deleteWarning": "Löscht alle Trainings, Pläne, eigenen Übungen und Gewichtseinträge auf diesem Gerät. Das lässt sich nicht rückgängig machen – speichere vorher eine Sicherung, wenn du die Daten behalten willst.",
+  "deleteConfirmWord": "LÖSCHEN",
+  "deleteConfirmLabel": "Zum Bestätigen „{word}“ eingeben",
+  "@deleteConfirmLabel": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteFinal": "Endgültig löschen",
+  "allDataDeleted": "Alle Daten gelöscht",
+  "license": "Freie Software unter der GNU AGPL-3.0"
+}

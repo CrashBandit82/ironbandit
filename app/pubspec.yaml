@@ -1,0 +1,35 @@
+name: ironbandit
+description: "IronBandit – offline workout tracker for Android, no account needed."
+publish_to: 'none'
+version: 2.0.0+2
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.3
+  path_provider: ^2.1.6
+  sqlite3: ^3.5.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/logo.png
+
+# Compile SQLite from source (tool/fetch-sqlite.sh) instead of downloading
+# a prebuilt library – required for F-Droid, used for all builds.
+hooks:
+  user_defines:
+    sqlite3:
+      source: source
+      path: third_party/sqlite/sqlite3.c

@@ -1,0 +1,16 @@
+IronBandit ist ein kostenloses und werbefreies Trainingstagebuch fürs Krafttraining. Es funktioniert offline und ohne Konto: Alle Daten bleiben auf deinem Gerät, die App hat keine Internet-Berechtigung.
+
+<b>Funktionen</b>
+<ul>
+<li>Trainingspläne wie „Push Day“ – nur Übungen und Reihenfolge; Plan starten und Übung für Übung abarbeiten, mit Trainingsdauer</li>
+<li>Gewicht und Wiederholungen Satz für Satz live eintragen, vorbefüllt aus dem letzten Satz und dem letzten Training</li>
+<li>Pausentimer mit Benachrichtigung und Vibration am Pausenende, auch im Hintergrund</li>
+<li>Wochenübersicht mit Wochenziel, Volumen im Vergleich zur Vorwoche und Hinweis bei Stagnation</li>
+<li>Dauerhafte Notizen pro Übung, 22 Standardübungen und beliebig viele eigene</li>
+<li>Körpergewicht mit Verlauf und 7-Tage-Trend</li>
+<li>Pläne als CSV importieren und exportieren</li>
+<li>Sicherung und Wiederherstellung als Datei, CSV-Export</li>
+<li>Deutsch und Englisch, helles und dunkles Design</li>
+</ul>
+
+Die App ist freie Software unter der GNU AGPL-3.0.

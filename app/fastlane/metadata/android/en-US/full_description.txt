@@ -1,0 +1,16 @@
+IronBandit is a free, ad-free workout log for strength training. It works offline and without an account: all data stays on your device, the app has no internet permission.
+
+<b>Features</b>
+<ul>
+<li>Workout plans like "Push Day" – only exercises and their order; start a plan and work through it exercise by exercise, with workout duration</li>
+<li>Log weight and reps set by set, prefilled from your last set and your last workout</li>
+<li>Rest timer with a notification and vibration when the rest is over, also in the background</li>
+<li>Weekly overview with a weekly goal, volume compared to last week and a hint when an exercise stalls</li>
+<li>Lasting notes per exercise, 22 starter exercises and as many of your own as you like</li>
+<li>Body weight with history and 7-day trend</li>
+<li>Import and export plans as CSV</li>
+<li>Backup and restore as a file, CSV export</li>
+<li>German and English, light and dark theme</li>
+</ul>
+
+The app is free software under the GNU AGPL-3.0.

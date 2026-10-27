@@ -1,0 +1,1 @@
+Neu: native Offline-App ohne Konto. Alle Daten bleiben auf dem Gerät (keine Internet-Berechtigung). Trainingspläne, Satz-Eingabe mit Vorbefüllung, Pausentimer mit Benachrichtigung, Wochenübersicht, Körpergewicht, Sicherung als Datei. Der CSV-Export der früheren Web-App lässt sich übernehmen.
