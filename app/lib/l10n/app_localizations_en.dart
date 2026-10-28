@@ -70,7 +70,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reorder => 'Reorder';
 
   @override
-  String get trainingTitle => 'Training';
+  String greeting(String name) {
+    return 'Hi, $name!';
+  }
+
+  @override
+  String get greetingNoName => 'Hello!';
 
   @override
   String get today => 'Today';

@@ -70,7 +70,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reorder => 'Verschieben';
 
   @override
-  String get trainingTitle => 'Training';
+  String greeting(String name) {
+    return 'Hallo, $name!';
+  }
+
+  @override
+  String get greetingNoName => 'Hallo!';
 
   @override
   String get today => 'Heute';

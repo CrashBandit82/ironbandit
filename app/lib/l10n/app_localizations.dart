@@ -212,11 +212,17 @@ abstract class AppLocalizations {
   /// **'Verschieben'**
   String get reorder;
 
-  /// No description provided for @trainingTitle.
+  /// No description provided for @greeting.
   ///
   /// In de, this message translates to:
-  /// **'Training'**
-  String get trainingTitle;
+  /// **'Hallo, {name}!'**
+  String greeting(String name);
+
+  /// No description provided for @greetingNoName.
+  ///
+  /// In de, this message translates to:
+  /// **'Hallo!'**
+  String get greetingNoName;
 
   /// No description provided for @today.
   ///

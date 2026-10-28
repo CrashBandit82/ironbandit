@@ -20,7 +20,15 @@
   "invalidNumber": "Bitte eine gültige Zahl eingeben",
   "fileSaved": "Datei gespeichert",
   "reorder": "Verschieben",
-  "trainingTitle": "Training",
+  "greeting": "Hallo, {name}!",
+  "@greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "greetingNoName": "Hallo!",
   "today": "Heute",
   "yesterday": "Gestern",
   "prevDay": "Vorheriger Tag",

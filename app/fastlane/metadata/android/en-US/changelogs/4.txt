@@ -1,0 +1,1 @@
+Main page like MacroBandit: profile picture and a greeting with your name.

@@ -258,17 +258,10 @@ class _TrainingTabState extends State<TrainingTab> {
         : _day == yesterday
         ? '${t.yesterday}, $date'
         : DateFormat.yMMMEd(context.locale).format(_day);
-    return Row(
+    final profile = SessionScope.of(context).profile;
+    final dayRow = Row(
       children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(t.trainingTitle, style: context.tt.headlineSmall),
-              Text(label, style: context.tt.bodySmall),
-            ],
-          ),
-        ),
+        Expanded(child: Text(label, style: context.tt.titleSmall)),
         IconButton(
           tooltip: t.prevDay,
           onPressed: () => _setDay(DateTime(_day.year, _day.month, _day.day - 1)),
@@ -295,6 +288,29 @@ class _TrainingTabState extends State<TrainingTab> {
           onPressed: _isToday ? null : () => _setDay(DateTime(_day.year, _day.month, _day.day + 1)),
           icon: const Icon(Icons.chevron_right),
         ),
+      ],
+    );
+    // greeting like MacroBandit, then the day with its navigation
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          children: [
+            UserAvatar(profile: profile, size: 48),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Semantics(
+                header: true,
+                child: Text(
+                  profile.name.isEmpty ? t.greetingNoName : t.greeting(profile.name),
+                  style: context.tt.titleLarge,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        dayRow,
       ],
     );
   }
