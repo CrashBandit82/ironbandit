@@ -94,8 +94,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get entries => 'Exercises';
 
   @override
-  String get noEntries =>
-      'Nothing logged yet. Start a plan or add an exercise.';
+  String get noEntries => 'Nothing logged yet. Start a plan or add an exercise.';
 
   @override
   String get noEntriesDay => 'Nothing logged on this day.';
@@ -119,34 +118,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String exercisesCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count exercises',
-      one: '1 exercise',
-    );
+    String _temp0 = intl.Intl.pluralLogic(count, locale: localeName, other: '$count exercises', one: '1 exercise');
     return '$_temp0';
   }
 
   @override
   String setsCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count sets',
-      one: '1 set',
-    );
+    String _temp0 = intl.Intl.pluralLogic(count, locale: localeName, other: '$count sets', one: '1 set');
     return '$_temp0';
   }
 
   @override
   String setsDone(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count sets done',
-      one: '1 set done',
-    );
+    String _temp0 = intl.Intl.pluralLogic(count, locale: localeName, other: '$count sets done', one: '1 set done');
     return '$_temp0';
   }
 
@@ -174,8 +158,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get finishWorkout => 'Finish workout';
 
   @override
-  String get finishOpenConfirm =>
-      'Not all exercises are checked off. Finish the workout anyway?';
+  String get finishOpenConfirm => 'Not all exercises are checked off. Finish the workout anyway?';
 
   @override
   String workoutFinished(String duration) {
@@ -238,35 +221,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String stagnationWeight(String name, int weeks, String value) {
-    String _temp0 = intl.Intl.pluralLogic(
-      weeks,
-      locale: localeName,
-      other: '$weeks weeks',
-      one: '1 week',
-    );
+    String _temp0 = intl.Intl.pluralLogic(weeks, locale: localeName, other: '$weeks weeks', one: '1 week');
     return '$name: at $value kg for $_temp0';
   }
 
   @override
   String stagnationVolume(String name, int weeks) {
-    String _temp0 = intl.Intl.pluralLogic(
-      weeks,
-      locale: localeName,
-      other: '$weeks weeks',
-      one: '1 week',
-    );
+    String _temp0 = intl.Intl.pluralLogic(weeks, locale: localeName, other: '$weeks weeks', one: '1 week');
     return '$name: volume flat for $_temp0';
   }
 
   @override
-  String get stagnationHint =>
-      'Maybe time for small changes: weight, reps or a deload week.';
+  String get stagnationHint => 'Maybe time for small changes: weight, reps or a deload week.';
 
   @override
   String get lastTraining => 'Last workout';
-
-  @override
-  String get lastTime => 'last time';
 
   @override
   String setLabel(int n) {
@@ -358,8 +327,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restNotify => 'Notification when the rest ends';
 
   @override
-  String get restNotifySub =>
-      'With vibration, also when the app is in the background. A paired watch vibrates too.';
+  String get restNotifySub => 'With vibration, also when the app is in the background. A paired watch vibrates too.';
 
   @override
   String get restNotifyTitle => 'Rest is over';
@@ -470,8 +438,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get planNameHint => 'e.g. Push Day';
 
   @override
-  String get planHint =>
-      'Only exercises and their order. Tap an exercise for a note, drag the handle to reorder.';
+  String get planHint => 'Only exercises and their order. Tap an exercise for a note, drag the handle to reorder.';
 
   @override
   String get planNoteHint => 'Note in the plan, e.g. lower slowly';
@@ -500,8 +467,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get importPlansTitle => 'Import plans';
 
   @override
-  String get planExists =>
-      'A plan with this name exists – it is added as another one.';
+  String get planExists => 'A plan with this name exists – it is added as another one.';
 
   @override
   String importNewExercises(int count) {
@@ -564,8 +530,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get csvBinary => 'This is not a CSV file';
 
   @override
-  String get csvNotUtf8 =>
-      'The file is not UTF-8 – please save it as UTF-8 CSV';
+  String get csvNotUtf8 => 'The file is not UTF-8 – please save it as UTF-8 CSV';
 
   @override
   String get csvUnreadable => 'The file could not be read as CSV';
@@ -662,8 +627,31 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get localDataInfo =>
-      'All data stays on this device. No account, no internet connection.';
+  String get localDataInfo => 'All data stays on this device. No account, no internet connection.';
+
+  @override
+  String get profileTitle => 'My profile';
+
+  @override
+  String get changeName => 'Change name';
+
+  @override
+  String get yourName => 'Your name';
+
+  @override
+  String get nameSaved => 'Name saved';
+
+  @override
+  String get changeAvatar => 'Change picture';
+
+  @override
+  String get removeAvatar => 'Remove picture';
+
+  @override
+  String get avatarUpdated => 'Picture updated';
+
+  @override
+  String get avatarTooBig => 'Image too large (max. 5 MB)';
 
   @override
   String get trainingSettings => 'Training';
@@ -721,15 +709,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get backupInvalid => 'This is not a valid IronBandit backup';
 
   @override
-  String get backupTooNew =>
-      'The backup is from a newer app version – please update the app first';
+  String get backupTooNew => 'The backup is from a newer app version – please update the app first';
 
   @override
   String get historyImportTitle => 'Import workouts from CSV';
 
   @override
-  String get historyImportSub =>
-      'Export of the IronBandit web app or this app; existing entries stay';
+  String get historyImportSub => 'Export of the IronBandit web app or this app; existing entries stay';
 
   @override
   String historyImported(int logs, int sets, int weights) {
@@ -755,8 +741,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteAllData => 'Delete all data';
 
   @override
-  String get deleteAllDataSub =>
-      'Workouts, plans, exercises and weight on this device';
+  String get deleteAllDataSub => 'Workouts, plans, exercises and weight on this device';
 
   @override
   String get deleteWarning =>

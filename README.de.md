@@ -29,6 +29,7 @@
 - **Körpergewicht** mit Verlauf und 7-Tage-Trend
 - **Pläne als CSV** – Import und Export, mit Beispieldatei
 - **Sicherung & Wiederherstellung** als JSON-Datei, CSV-Export; der CSV-Export der früheren IronBandit-Web-App lässt sich übernehmen
+- Profil mit Name und Bild, nur auf dem Gerät gespeichert
 - Deutsch & Englisch, helles & dunkles Design
 
 ## Download

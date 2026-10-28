@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:sqlite3/sqlite3.dart';
@@ -75,9 +76,12 @@ String foldText(String s) {
 ///
 /// Methods are async so the UI does not care where the data comes from.
 class Api {
-  Api(this._db, {DateTime Function()? clock}) : _clock = clock ?? DateTime.now;
+  Api(this._db, {this.filesDir, DateTime Function()? clock}) : _clock = clock ?? DateTime.now;
 
   final Database _db;
+
+  /// Private app directory for the profile picture.
+  final String? filesDir;
   final DateTime Function() _clock;
 
   static String date(DateTime d) =>
@@ -139,6 +143,46 @@ class Api {
 
   /// Theme of this device: "system", "light" or "dark".
   String get themeMode => _setting('theme') ?? 'system';
+
+  // ── Profile ────────────────────────────────────────────────────────────
+
+  Future<Profile> profile() async {
+    final avatar = _setting('avatar');
+    return Profile(
+      name: _setting('username') ?? '',
+      avatarPath: avatar == null || filesDir == null ? null : '$filesDir/$avatar',
+    );
+  }
+
+  Future<Profile> setName(String name) async {
+    _setSetting('username', name.trim().isEmpty ? null : name.trim());
+    return profile();
+  }
+
+  /// Stores the picture under a new name, so image caches never show the old one.
+  Future<Profile> setAvatar(Uint8List bytes, String extension) async {
+    final name = 'avatar-${_clock().millisecondsSinceEpoch}.$extension';
+    await File('$filesDir/$name').writeAsBytes(bytes, flush: true);
+    final old = _setting('avatar');
+    _setSetting('avatar', name);
+    if (old != null) await _deleteFile(old);
+    return profile();
+  }
+
+  Future<Profile> deleteAvatar() async {
+    final old = _setting('avatar');
+    _setSetting('avatar', null);
+    if (old != null) await _deleteFile(old);
+    return profile();
+  }
+
+  Future<void> _deleteFile(String name) async {
+    try {
+      await File('$filesDir/$name').delete();
+    } on FileSystemException {
+      // already gone
+    }
+  }
 
   Future<void> setThemeMode(String mode) async => _setSetting('theme', mode);
 
@@ -801,8 +845,9 @@ class Api {
     'weights',
   ];
 
-  /// Settings of this device that a backup neither carries nor replaces.
-  static const _deviceSettings = {'theme'};
+  /// Settings of this device that a backup neither carries nor replaces
+  /// (the profile picture is a file on this device).
+  static const _deviceSettings = {'theme', 'avatar'};
 
   /// Whole database as JSON.
   Future<Uint8List> exportBackup() async {
@@ -871,6 +916,7 @@ class Api {
 
   /// Deletes everything on this device; the starter exercises come back.
   Future<void> deleteAllData({required bool german}) async {
+    await deleteAvatar();
     final keep = _keepDeviceSettings();
     _transaction(() {
       for (final t in _tables.reversed) {

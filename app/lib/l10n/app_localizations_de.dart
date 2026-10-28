@@ -94,15 +94,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get entries => 'Übungen';
 
   @override
-  String get noEntries =>
-      'Noch nichts eingetragen. Starte einen Plan oder füge eine Übung hinzu.';
+  String get noEntries => 'Noch nichts eingetragen. Starte einen Plan oder füge eine Übung hinzu.';
 
   @override
   String get noEntriesDay => 'An diesem Tag ist nichts eingetragen.';
 
   @override
-  String get noOtherEntries =>
-      'Keine weiteren Übungen außerhalb des Trainings.';
+  String get noOtherEntries => 'Keine weiteren Übungen außerhalb des Trainings.';
 
   @override
   String get noValuesYet => 'Noch keine Werte';
@@ -120,23 +118,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String exercisesCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count Übungen',
-      one: '1 Übung',
-    );
+    String _temp0 = intl.Intl.pluralLogic(count, locale: localeName, other: '$count Übungen', one: '1 Übung');
     return '$_temp0';
   }
 
   @override
   String setsCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count Sätze',
-      one: '1 Satz',
-    );
+    String _temp0 = intl.Intl.pluralLogic(count, locale: localeName, other: '$count Sätze', one: '1 Satz');
     return '$_temp0';
   }
 
@@ -175,8 +163,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get finishWorkout => 'Training abschließen';
 
   @override
-  String get finishOpenConfirm =>
-      'Noch nicht alle Übungen sind abgehakt. Training trotzdem abschließen?';
+  String get finishOpenConfirm => 'Noch nicht alle Übungen sind abgehakt. Training trotzdem abschließen?';
 
   @override
   String workoutFinished(String duration) {
@@ -239,35 +226,21 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String stagnationWeight(String name, int weeks, String value) {
-    String _temp0 = intl.Intl.pluralLogic(
-      weeks,
-      locale: localeName,
-      other: '$weeks Wochen',
-      one: '1 Woche',
-    );
+    String _temp0 = intl.Intl.pluralLogic(weeks, locale: localeName, other: '$weeks Wochen', one: '1 Woche');
     return '$name: seit $_temp0 bei $value kg';
   }
 
   @override
   String stagnationVolume(String name, int weeks) {
-    String _temp0 = intl.Intl.pluralLogic(
-      weeks,
-      locale: localeName,
-      other: '$weeks Wochen',
-      one: '1 Woche',
-    );
+    String _temp0 = intl.Intl.pluralLogic(weeks, locale: localeName, other: '$weeks Wochen', one: '1 Woche');
     return '$name: Volumen seit $_temp0 stabil';
   }
 
   @override
-  String get stagnationHint =>
-      'Vielleicht Zeit für kleine Änderungen: Gewicht, Wiederholungen oder eine Deload-Woche.';
+  String get stagnationHint => 'Vielleicht Zeit für kleine Änderungen: Gewicht, Wiederholungen oder eine Deload-Woche.';
 
   @override
   String get lastTraining => 'Letztes Training';
-
-  @override
-  String get lastTime => 'letztes Mal';
 
   @override
   String setLabel(int n) {
@@ -359,8 +332,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get restNotify => 'Benachrichtigung am Pausenende';
 
   @override
-  String get restNotifySub =>
-      'Mit Vibration, auch wenn die App im Hintergrund ist. Eine gekoppelte Uhr vibriert mit.';
+  String get restNotifySub => 'Mit Vibration, auch wenn die App im Hintergrund ist. Eine gekoppelte Uhr vibriert mit.';
 
   @override
   String get restNotifyTitle => 'Pause vorbei';
@@ -501,8 +473,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get importPlansTitle => 'Pläne importieren';
 
   @override
-  String get planExists =>
-      'Ein Plan mit diesem Namen existiert schon – er wird zusätzlich angelegt.';
+  String get planExists => 'Ein Plan mit diesem Namen existiert schon – er wird zusätzlich angelegt.';
 
   @override
   String importNewExercises(int count) {
@@ -565,8 +536,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get csvBinary => 'Das ist keine CSV-Datei';
 
   @override
-  String get csvNotUtf8 =>
-      'Die Datei ist nicht UTF-8-kodiert – bitte als UTF-8-CSV speichern';
+  String get csvNotUtf8 => 'Die Datei ist nicht UTF-8-kodiert – bitte als UTF-8-CSV speichern';
 
   @override
   String get csvUnreadable => 'Die Datei konnte nicht als CSV gelesen werden';
@@ -663,8 +633,31 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get localDataInfo =>
-      'Alle Daten bleiben auf diesem Gerät. Kein Konto, keine Verbindung ins Internet.';
+  String get localDataInfo => 'Alle Daten bleiben auf diesem Gerät. Kein Konto, keine Verbindung ins Internet.';
+
+  @override
+  String get profileTitle => 'Mein Profil';
+
+  @override
+  String get changeName => 'Name ändern';
+
+  @override
+  String get yourName => 'Dein Name';
+
+  @override
+  String get nameSaved => 'Name gespeichert';
+
+  @override
+  String get changeAvatar => 'Profilbild ändern';
+
+  @override
+  String get removeAvatar => 'Profilbild entfernen';
+
+  @override
+  String get avatarUpdated => 'Profilbild aktualisiert';
+
+  @override
+  String get avatarTooBig => 'Bild zu groß (max. 5 MB)';
 
   @override
   String get trainingSettings => 'Training';
@@ -688,8 +681,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get backupTitle => 'Sicherung speichern';
 
   @override
-  String get backupSub =>
-      'Alle Daten als JSON-Datei, z. B. für ein neues Handy';
+  String get backupSub => 'Alle Daten als JSON-Datei, z. B. für ein neues Handy';
 
   @override
   String get backupFilePrefix => 'ironbandit_sicherung';
@@ -723,15 +715,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get backupInvalid => 'Das ist keine gültige IronBandit-Sicherung';
 
   @override
-  String get backupTooNew =>
-      'Die Sicherung stammt aus einer neueren App-Version – bitte erst die App aktualisieren';
+  String get backupTooNew => 'Die Sicherung stammt aus einer neueren App-Version – bitte erst die App aktualisieren';
 
   @override
   String get historyImportTitle => 'Trainings aus CSV übernehmen';
 
   @override
-  String get historyImportSub =>
-      'Export der IronBandit-Web-App oder dieser App; vorhandene Einträge bleiben';
+  String get historyImportSub => 'Export der IronBandit-Web-App oder dieser App; vorhandene Einträge bleiben';
 
   @override
   String historyImported(int logs, int sets, int weights) {
@@ -757,8 +747,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get deleteAllData => 'Alle Daten löschen';
 
   @override
-  String get deleteAllDataSub =>
-      'Trainings, Pläne, Übungen und Gewicht auf diesem Gerät';
+  String get deleteAllDataSub => 'Trainings, Pläne, Übungen und Gewicht auf diesem Gerät';
 
   @override
   String get deleteWarning =>

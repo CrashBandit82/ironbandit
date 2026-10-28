@@ -62,8 +62,7 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -71,8 +70,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,19 +82,15 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('de'),
-    Locale('en'),
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('de'), Locale('en')];
 
   /// No description provided for @appName.
   ///
@@ -487,12 +481,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Letztes Training'**
   String get lastTraining;
-
-  /// No description provided for @lastTime.
-  ///
-  /// In de, this message translates to:
-  /// **'letztes Mal'**
-  String get lastTime;
 
   /// No description provided for @setLabel.
   ///
@@ -1136,6 +1124,54 @@ abstract class AppLocalizations {
   /// **'Alle Daten bleiben auf diesem Gerät. Kein Konto, keine Verbindung ins Internet.'**
   String get localDataInfo;
 
+  /// No description provided for @profileTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Mein Profil'**
+  String get profileTitle;
+
+  /// No description provided for @changeName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name ändern'**
+  String get changeName;
+
+  /// No description provided for @yourName.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Name'**
+  String get yourName;
+
+  /// No description provided for @nameSaved.
+  ///
+  /// In de, this message translates to:
+  /// **'Name gespeichert'**
+  String get nameSaved;
+
+  /// No description provided for @changeAvatar.
+  ///
+  /// In de, this message translates to:
+  /// **'Profilbild ändern'**
+  String get changeAvatar;
+
+  /// No description provided for @removeAvatar.
+  ///
+  /// In de, this message translates to:
+  /// **'Profilbild entfernen'**
+  String get removeAvatar;
+
+  /// No description provided for @avatarUpdated.
+  ///
+  /// In de, this message translates to:
+  /// **'Profilbild aktualisiert'**
+  String get avatarUpdated;
+
+  /// No description provided for @avatarTooBig.
+  ///
+  /// In de, this message translates to:
+  /// **'Bild zu groß (max. 5 MB)'**
+  String get avatarTooBig;
+
   /// No description provided for @trainingSettings.
   ///
   /// In de, this message translates to:
@@ -1341,8 +1377,7 @@ abstract class AppLocalizations {
   String get license;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -1351,8 +1386,7 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['de', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['de', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;

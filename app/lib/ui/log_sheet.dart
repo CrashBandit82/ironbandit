@@ -237,7 +237,6 @@ class _LogSheetState extends State<_LogSheet> {
                 children: [
                   if (widget.workout != null) _pager(context),
                   Text(log.exerciseName, style: context.tt.titleLarge),
-                  if (_last.day != null && !log.isCardio) _lastHint(context),
                   const SizedBox(height: 14),
                   if (log.isCardio) _cardio(context) else ..._strength(context, log),
                   if (_exercise != null) ...[const SizedBox(height: 16), _noteField(context)],
@@ -293,19 +292,53 @@ class _LogSheetState extends State<_LogSheet> {
     );
   }
 
-  Widget _lastHint(BuildContext context) {
+  /// Sets of the last training, one per line like the web app; the set that
+  /// comes next is highlighted.
+  Widget _lastBox(BuildContext context, int nextSet) {
+    final c = context.c;
+    final t = context.t;
     final date = DateFormat.MMMEd(context.locale).format(_last.day!);
-    final sets = _last.sets.map((s) => fmtSet(context, s.reps, s.weightKg)).join(' · ');
-    return Padding(
-      padding: const EdgeInsets.only(top: 4),
-      child: Text('${context.t.lastTraining} ($date): $sets', style: context.tt.bodySmall),
+    return Container(
+      padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
+      decoration: BoxDecoration(
+        color: c.inset,
+        border: Border.all(color: c.border),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text('${t.lastTraining} · $date', style: context.tt.labelMedium),
+          const SizedBox(height: 4),
+          for (final s in _last.sets)
+            Builder(
+              builder: (context) {
+                final next = s.setNumber == nextSet;
+                final style = context.tt.bodyMedium!.copyWith(
+                  color: next ? c.accent : c.muted,
+                  fontWeight: next ? FontWeight.w800 : FontWeight.w500,
+                  fontFeatures: const [FontFeature.tabularFigures()],
+                );
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2),
+                  child: Row(
+                    children: [
+                      SizedBox(width: 18, child: next ? Icon(Icons.arrow_right_alt, size: 16, color: c.accent) : null),
+                      Expanded(child: Text(t.setLabel(s.setNumber), style: style)),
+                      Text(fmtSet(context, s.reps, s.weightKg), style: style),
+                    ],
+                  ),
+                );
+              },
+            ),
+        ],
+      ),
     );
   }
 
   List<Widget> _strength(BuildContext context, LogEntry log) {
     final t = context.t;
     final c = context.c;
-    final next = _lastFor(log.sets.length + 1);
     return [
       if (log.sets.isNotEmpty)
         DecoratedBox(
@@ -343,13 +376,12 @@ class _LogSheetState extends State<_LogSheet> {
             ],
           ),
         ),
+      if (_last.sets.isNotEmpty) ...[
+        if (log.sets.isNotEmpty) const SizedBox(height: 12),
+        _lastBox(context, log.sets.length + 1),
+      ],
       const SizedBox(height: 12),
-      Text(
-        next == null
-            ? t.setLabel(log.sets.length + 1)
-            : '${t.setLabel(log.sets.length + 1)} · ${t.lastTime}: ${fmtSet(context, next.reps, next.weightKg)}',
-        style: context.tt.labelMedium,
-      ),
+      Text(t.setLabel(log.sets.length + 1), style: context.tt.labelMedium),
       const SizedBox(height: 6),
       Row(
         children: [

@@ -1,0 +1,1 @@
+Letztes Training wie in der Web-App: jeder Satz in einer eigenen Zeile, der nächste Satz hervorgehoben. Neu: Profil mit Name und Profilbild.

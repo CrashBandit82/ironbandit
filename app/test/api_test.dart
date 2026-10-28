@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ironbandit/data/api.dart';
@@ -258,6 +260,25 @@ void main() {
       api.importHistoryCsv(utf8.encode('plan_name,exercise_name,order_index\n')),
       throwsA(isA<ApiException>()),
     );
+  });
+
+  test('profile: name and picture stay on the device', () async {
+    final dir = Directory.systemTemp.createTempSync('ib');
+    addTearDown(() => dir.deleteSync(recursive: true));
+    api = Api(prepare(sqlite3.openInMemory()), filesDir: dir.path, clock: () => now);
+    await api.setName('  Roland ');
+    var p = await api.setAvatar(Uint8List.fromList([1, 2, 3]), 'png');
+    expect(p.name, 'Roland');
+    expect(File(p.avatarPath!).readAsBytesSync(), [1, 2, 3]);
+    final backup = utf8.decode(await api.exportBackup());
+    expect(backup, contains('Roland'));
+    expect(backup, isNot(contains('avatar')));
+    await api.importBackup(utf8.encode(backup));
+    expect((await api.profile()).avatarPath, p.avatarPath);
+    await api.deleteAllData(german: true);
+    p = await api.profile();
+    expect((p.name, p.avatarPath), ('', null));
+    expect(dir.listSync(), isEmpty);
   });
 
   test('search folding', () {

@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import '../data/api.dart';
@@ -30,13 +31,24 @@ class MoreTab extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    ClipOval(child: Image.asset('assets/logo.png', width: 56, height: 56, cacheWidth: 168)),
+                    Semantics(
+                      button: true,
+                      label: t.changeAvatar,
+                      child: InkWell(
+                        customBorder: const CircleBorder(),
+                        onTap: () => _avatarMenu(context),
+                        child: UserAvatar(profile: session.profile),
+                      ),
+                    ),
                     const SizedBox(width: 14),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(t.appName, style: context.tt.headlineSmall),
+                          Text(
+                            session.profile.name.isEmpty ? t.profileTitle : session.profile.name,
+                            style: context.tt.headlineSmall,
+                          ),
                           Text(t.localDataInfo, style: context.tt.bodySmall),
                         ],
                       ),
@@ -44,6 +56,23 @@ class MoreTab extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
+                Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      _item(
+                        context,
+                        Icons.person_outline,
+                        t.changeName,
+                        session.profile.name.isEmpty ? null : session.profile.name,
+                        () => _changeName(context),
+                      ),
+                      const Divider(),
+                      _item(context, Icons.photo_camera_outlined, t.changeAvatar, null, () => _avatarMenu(context)),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 16),
                 SectionLabel(t.trainingSettings),
                 Card(
                   clipBehavior: Clip.antiAlias,
@@ -188,6 +217,75 @@ class MoreTab extends StatelessWidget {
       trailing: Icon(Icons.chevron_right, color: c.faint),
       onTap: onTap,
     );
+  }
+
+  Future<void> _changeName(BuildContext context) async {
+    final t = context.t;
+    final session = context.session;
+    final name = await showDialog<String>(
+      context: context,
+      builder: (_) =>
+          PromptDialog(title: t.changeName, label: t.yourName, initial: session.profile.name, maxLength: 50),
+    );
+    if (name == null || !context.mounted) return;
+    session.updateProfile(await session.api.setName(name));
+    if (context.mounted) showMsg(context, t.nameSaved);
+  }
+
+  Future<void> _avatarMenu(BuildContext context) async {
+    final t = context.t;
+    final hasAvatar = context.session.profile.avatarPath != null;
+    final remove = await showModalBottomSheet<bool>(
+      context: context,
+      builder: (c) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.photo_library_outlined),
+              title: Text(t.changeAvatar),
+              onTap: () => Navigator.pop(c, false),
+            ),
+            if (hasAvatar)
+              ListTile(
+                leading: const Icon(Icons.delete_outline),
+                title: Text(t.removeAvatar),
+                onTap: () => Navigator.pop(c, true),
+              ),
+          ],
+        ),
+      ),
+    );
+    if (remove == null || !context.mounted) return;
+    final session = context.session;
+    try {
+      if (remove) {
+        session.updateProfile(await session.api.deleteAvatar());
+        return;
+      }
+      final file = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        maxWidth: 512,
+        maxHeight: 512,
+        imageQuality: 85,
+      );
+      if (file == null || !context.mounted) return;
+      final bytes = await file.readAsBytes();
+      if (bytes.length > 5 * 1024 * 1024) {
+        if (context.mounted) showMsg(context, t.avatarTooBig, error: true);
+        return;
+      }
+      final name = file.name.toLowerCase();
+      final ext = name.endsWith('.png')
+          ? 'png'
+          : name.endsWith('.webp')
+          ? 'webp'
+          : 'jpg';
+      session.updateProfile(await session.api.setAvatar(bytes, ext));
+      if (context.mounted) showMsg(context, t.avatarUpdated);
+    } on Object catch (e) {
+      if (context.mounted) showError(context, e);
+    }
   }
 
   Future<void> _restDuration(BuildContext context) async {

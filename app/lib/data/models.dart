@@ -227,3 +227,11 @@ class HistoryImport {
   /// Entries left out because the day already had them.
   final int skipped;
 }
+
+class Profile {
+  const Profile({required this.name, this.avatarPath});
+
+  /// Empty when not set.
+  final String name;
+  final String? avatarPath;
+}

@@ -29,6 +29,7 @@
 - **Body-weight tracker** with history and 7-day trend
 - **Plans as CSV** – import and export, sample file included
 - **Backup & restore** as a JSON file, CSV export; the CSV export of the former IronBandit web app can be imported
+- Profile with name and picture, stored only on the device
 - German & English, light & dark theme
 
 ## Download

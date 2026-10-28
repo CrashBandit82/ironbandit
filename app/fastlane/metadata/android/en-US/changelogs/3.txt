@@ -1,0 +1,1 @@
+Last workout like in the web app: every set on its own line, the next set highlighted. New: profile with name and picture.

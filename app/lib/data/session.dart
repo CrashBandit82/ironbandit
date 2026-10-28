@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'api.dart';
 import 'db.dart';
@@ -11,6 +12,7 @@ import 'models.dart';
 class Session extends ChangeNotifier {
   Api? _api;
   Settings? _settings;
+  Profile _profile = const Profile(name: '');
 
   /// Set when the database could not be opened.
   Object? error;
@@ -18,6 +20,12 @@ class Session extends ChangeNotifier {
   bool get ready => _settings != null;
   Api get api => _api!;
   Settings get settings => _settings!;
+  Profile get profile => _profile;
+
+  void updateProfile(Profile p) {
+    _profile = p;
+    notifyListeners();
+  }
 
   ThemeMode themeMode = ThemeMode.system;
 
@@ -28,7 +36,9 @@ class Session extends ChangeNotifier {
 
   Future<void> start() async {
     try {
-      _api = Api(await openAppDatabase());
+      final dir = await getApplicationSupportDirectory();
+      _api = Api(await openAppDatabase(), filesDir: dir.path);
+      _profile = await _api!.profile();
       _api!.seedExercises(german: _german);
       themeMode = ThemeMode.values.firstWhere((m) => m.name == _api!.themeMode, orElse: () => ThemeMode.system);
       _settings = await _api!.settings();
@@ -60,6 +70,7 @@ class Session extends ChangeNotifier {
 
   Future<void> dataReplaced() async {
     dataRevision++;
+    _profile = await api.profile();
     await reloadSettings();
   }
 

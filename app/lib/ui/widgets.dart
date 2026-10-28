@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../data/api.dart';
+import '../data/models.dart';
 import '../data/session.dart';
 import '../l10n/app_localizations.dart';
 import 'theme.dart';
@@ -353,5 +356,38 @@ class Tag extends StatelessWidget {
       text,
       style: context.tt.labelMedium!.copyWith(color: color ?? context.c.muted, fontWeight: FontWeight.w700),
     ),
+  );
+}
+
+/// Profile picture, or the brand gradient with a person icon.
+class UserAvatar extends StatelessWidget {
+  const UserAvatar({super.key, required this.profile, this.size = 64});
+
+  final Profile profile;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    final path = profile.avatarPath;
+    if (path != null) {
+      return ClipOval(
+        child: Image.file(
+          File(path),
+          width: size,
+          height: size,
+          cacheWidth: (size * MediaQuery.devicePixelRatioOf(context)).round(),
+          fit: BoxFit.cover,
+          errorBuilder: (_, _, _) => _placeholder(),
+        ),
+      );
+    }
+    return _placeholder();
+  }
+
+  Widget _placeholder() => Container(
+    width: size,
+    height: size,
+    decoration: const BoxDecoration(shape: BoxShape.circle, gradient: Palette.brandGradient),
+    child: Icon(Icons.person, color: Colors.white, size: size * 0.53),
   );
 }

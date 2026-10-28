@@ -147,7 +147,6 @@
   },
   "stagnationHint": "Vielleicht Zeit für kleine Änderungen: Gewicht, Wiederholungen oder eine Deload-Woche.",
   "lastTraining": "Letztes Training",
-  "lastTime": "letztes Mal",
   "setLabel": "Satz {n}",
   "@setLabel": {
     "placeholders": {
@@ -401,6 +400,14 @@
     }
   },
   "localDataInfo": "Alle Daten bleiben auf diesem Gerät. Kein Konto, keine Verbindung ins Internet.",
+  "profileTitle": "Mein Profil",
+  "changeName": "Name ändern",
+  "yourName": "Dein Name",
+  "nameSaved": "Name gespeichert",
+  "changeAvatar": "Profilbild ändern",
+  "removeAvatar": "Profilbild entfernen",
+  "avatarUpdated": "Profilbild aktualisiert",
+  "avatarTooBig": "Bild zu groß (max. 5 MB)",
   "trainingSettings": "Training",
   "appearance": "Darstellung",
   "themeSystem": "System",

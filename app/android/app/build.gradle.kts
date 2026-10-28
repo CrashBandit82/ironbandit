@@ -46,6 +46,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            // installs next to the release app, so testing never touches real data
+            applicationIdSuffix = ".debug"
+        }
         release {
             // unsigned when no keystore is configured (e.g. F-Droid signs itself)
             val release = signingConfigs.getByName("release")
