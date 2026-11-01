@@ -320,3 +320,10 @@ ParsedCsv parsePlanCsv(String text) {
         ]),
   ], errors);
 }
+
+/// File name for a shared plan: `ironbandit_plan_<name>.csv`, only safe characters.
+String sharedPlanFileName(String plan) {
+  final safe = plan.replaceAll(RegExp(r'[^\p{L}\p{N}]+', unicode: true), '_').replaceAll(RegExp(r'^_+|_+$'), '');
+  final short = safe.length > 40 ? safe.substring(0, 40) : safe;
+  return short.isEmpty ? 'ironbandit_plan.csv' : 'ironbandit_plan_$short.csv';
+}

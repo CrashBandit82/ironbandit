@@ -140,6 +140,12 @@ abstract class AppLocalizations {
   /// **'Bearbeiten'**
   String get edit;
 
+  /// No description provided for @share.
+  ///
+  /// In de, this message translates to:
+  /// **'Teilen'**
+  String get share;
+
   /// No description provided for @remove.
   ///
   /// In de, this message translates to:

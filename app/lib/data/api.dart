@@ -679,10 +679,13 @@ class Api {
 
   // ── Plan CSV ───────────────────────────────────────────────────────────
 
-  Future<String> exportPlansCsv() async => writePlanCsv([
-    for (final p in await plans())
-      (p.name, [for (final (i, item) in p.items.indexed) (item.exercise.name, i + 1, item.notes)]),
-  ]);
+  Future<String> exportPlansCsv() async => writePlanCsv([for (final p in await plans()) _planRows(p)]);
+
+  /// CSV with only [plan], for sharing; the receiver imports it like an export.
+  String planCsv(Plan plan) => writePlanCsv([_planRows(plan)]);
+
+  (String, List<(String, int, String?)>) _planRows(Plan p) =>
+      (p.name, [for (final (i, item) in p.items.indexed) (item.exercise.name, i + 1, item.notes)]);
 
   /// Names of the exercises in [csv] that don't exist yet (created on import).
   Future<Set<String>> unknownExercises(ParsedCsv csv) async {

@@ -177,6 +177,21 @@ void main() {
     expect([for (final i in plan.items) (i.exercise.name, i.notes)], [('Bench', "'=SUM(A1)"), ('Dips', null)]);
   });
 
+  test('shared plan CSV holds only that plan and imports again', () async {
+    await api.savePlan(null, 'Push', [((await ex('Bench')).id, 'slow')]);
+    await api.savePlan(null, 'Pull', [((await ex('Rows')).id, null)]);
+    final push = (await api.plans()).firstWhere((p) => p.name == 'Push');
+    final parsed = parsePlanCsv(api.planCsv(push));
+    expect([for (final p in parsed.plans) p.name], ['Push']);
+    expect(await api.importPlans(parsed), 1);
+    expect((await api.plans()).where((p) => p.name == 'Push').length, 2);
+  });
+
+  test('shared plan file name keeps only safe characters', () {
+    expect(sharedPlanFileName('Push Day / Ober-körper'), 'ironbandit_plan_Push_Day_Ober_körper.csv');
+    expect(sharedPlanFileName('../..'), 'ironbandit_plan.csv');
+  });
+
   test('backup restores everything and keeps the device theme', () async {
     final bench = await ex('Bench');
     final plan = await api.savePlan(null, 'Push', [(bench.id, null)]);

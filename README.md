@@ -27,7 +27,7 @@
 - **Week at a glance** – workouts against your weekly goal, volume compared to last week, and a hint when an exercise stalls
 - **Notes per exercise** that stay with the exercise for every workout
 - **Body-weight tracker** with history and 7-day trend
-- **Plans as CSV** – import and export, sample file included
+- **Plans as CSV** – import and export, sample file included; share a single plan via the Android share menu
 - **Backup & restore** as a JSON file, CSV export; the CSV export of the former IronBandit web app can be imported
 - Profile with name and picture, stored only on the device
 - German & English, light & dark theme

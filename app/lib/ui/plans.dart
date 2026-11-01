@@ -28,6 +28,11 @@ class PlansSection extends StatelessWidget {
     onChanged();
   }
 
+  Future<void> _share(BuildContext context, Plan plan) async {
+    final csv = context.api.planCsv(plan);
+    await shareFile(sharedPlanFileName(plan.name), 'text/csv', utf8.encode(csv), subject: plan.name);
+  }
+
   Future<void> _menu(BuildContext context, String action) async {
     final t = context.t;
     switch (action) {
@@ -105,13 +110,18 @@ class PlansSection extends StatelessWidget {
                         ],
                       ),
                     ),
-                    PopupMenuButton<bool>(
+                    PopupMenuButton<String>(
                       tooltip: t.more,
                       icon: Icon(Icons.more_vert, color: c.muted),
-                      onSelected: (edit) => edit ? _edit(context, p) : _delete(context, p),
+                      onSelected: (a) => switch (a) {
+                        'edit' => _edit(context, p),
+                        'share' => _share(context, p),
+                        _ => _delete(context, p),
+                      },
                       itemBuilder: (_) => [
-                        PopupMenuItem(value: true, child: Text(t.edit)),
-                        PopupMenuItem(value: false, child: Text(t.delete)),
+                        PopupMenuItem(value: 'edit', child: Text(t.edit)),
+                        PopupMenuItem(value: 'share', child: Text(t.share)),
+                        PopupMenuItem(value: 'delete', child: Text(t.delete)),
                       ],
                     ),
                     FilledButton.icon(

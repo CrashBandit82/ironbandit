@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.AlarmManager
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -18,7 +19,8 @@ import io.flutter.plugin.common.MethodChannel
  * Platform side of the app:
  * - "files": "saveFile" (the user picks a location, bytes are written there) and
  *   "openFile" (the user picks a file, its bytes are returned) via the Storage
- *   Access Framework.
+ *   Access Framework; "shareFile" (bytes as a file into the share sheet, via
+ *   [SharedFileProvider]).
  * - "device": rest timer alarm ("scheduleRest", "cancelRest", "askNotify") and
  *   keeping the screen on during a workout ("keepScreenOn").
  */
@@ -31,6 +33,19 @@ class MainActivity : FlutterActivity() {
         super.configureFlutterEngine(flutterEngine)
         val messenger = flutterEngine.dartExecutor.binaryMessenger
         MethodChannel(messenger, "at.ironbandit.app/files").setMethodCallHandler { call, result ->
+            if (call.method == "shareFile") {
+                return@setMethodCallHandler try {
+                    shareFile(
+                        call.argument<String>("name")!!,
+                        call.argument<String>("mime")!!,
+                        call.argument<ByteArray>("bytes")!!,
+                        call.argument<String>("subject"),
+                    )
+                    result.success(null)
+                } catch (e: Exception) {
+                    result.error("share", e.message, null)
+                }
+            }
             if (call.method != "saveFile" && call.method != "openFile") {
                 return@setMethodCallHandler result.notImplemented()
             }
@@ -89,6 +104,18 @@ class MainActivity : FlutterActivity() {
                 else -> result.notImplemented()
             }
         }
+    }
+
+    private fun shareFile(name: String, mime: String, bytes: ByteArray, subject: String?) {
+        val uri = SharedFileProvider.write(this, name, bytes)
+        val send = Intent(Intent.ACTION_SEND).apply {
+            type = mime
+            putExtra(Intent.EXTRA_STREAM, uri)
+            if (subject != null) putExtra(Intent.EXTRA_SUBJECT, subject)
+            clipData = ClipData.newRawUri(name, uri)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        startActivity(Intent.createChooser(send, subject))
     }
 
     private fun alarms() = getSystemService(Context.ALARM_SERVICE) as AlarmManager

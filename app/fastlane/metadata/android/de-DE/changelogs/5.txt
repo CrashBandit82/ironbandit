@@ -1,0 +1,1 @@
+Plan teilen: ein einzelner Plan geht als CSV-Datei über das Teilen-Menü (z. B. WhatsApp, Mail) an andere; dort über „Pläne importieren“ übernehmen.

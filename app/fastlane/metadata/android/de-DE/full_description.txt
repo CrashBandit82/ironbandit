@@ -8,7 +8,7 @@ IronBandit ist ein kostenloses und werbefreies Trainingstagebuch fürs Krafttrai
 <li>Wochenübersicht mit Wochenziel, Volumen im Vergleich zur Vorwoche und Hinweis bei Stagnation</li>
 <li>Dauerhafte Notizen pro Übung, 22 Standardübungen und beliebig viele eigene</li>
 <li>Körpergewicht mit Verlauf und 7-Tage-Trend</li>
-<li>Pläne als CSV importieren und exportieren</li>
+<li>Pläne als CSV importieren und exportieren, einzelne Pläne teilen</li>
 <li>Sicherung und Wiederherstellung als Datei, CSV-Export</li>
 <li>Deutsch und Englisch, helles und dunkles Design</li>
 </ul>

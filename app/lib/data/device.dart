@@ -10,6 +10,10 @@ const _device = MethodChannel('at.ironbandit.app/device');
 Future<bool> saveFile(String name, String mime, Uint8List bytes) async =>
     await _files.invokeMethod<bool>('saveFile', {'name': name, 'mime': mime, 'bytes': bytes}) ?? false;
 
+/// Opens the Android share sheet with [bytes] as file [name].
+Future<void> shareFile(String name, String mime, Uint8List bytes, {String? subject}) =>
+    _files.invokeMethod<void>('shareFile', {'name': name, 'mime': mime, 'bytes': bytes, 'subject': subject});
+
 /// The user picks a file; null when cancelled.
 Future<Uint8List?> openFile() => _files.invokeMethod<Uint8List>('openFile');
 

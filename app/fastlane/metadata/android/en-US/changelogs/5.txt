@@ -1,0 +1,1 @@
+Share a plan: a single plan goes out as a CSV file via the share menu (e.g. WhatsApp, mail); the receiver adds it with "Import plans".

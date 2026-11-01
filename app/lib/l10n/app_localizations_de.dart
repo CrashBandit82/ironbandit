@@ -34,6 +34,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get edit => 'Bearbeiten';
 
   @override
+  String get share => 'Teilen';
+
+  @override
   String get remove => 'Entfernen';
 
   @override
