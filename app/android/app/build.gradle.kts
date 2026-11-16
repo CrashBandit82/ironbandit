@@ -34,9 +34,9 @@ android {
     }
 
     signingConfigs {
-        create("release") {
-            val store = signingValue("storeFile", "IRONBANDIT_KEYSTORE")
-            if (store != null) {
+        val store = signingValue("storeFile", "IRONBANDIT_KEYSTORE")
+        if (store != null) {
+            create("release") {
                 storeFile = file(store)
                 storePassword = signingValue("storePassword", "IRONBANDIT_KEYSTORE_PASSWORD")
                 keyAlias = signingValue("keyAlias", "IRONBANDIT_KEY_ALIAS")
@@ -51,9 +51,9 @@ android {
             applicationIdSuffix = ".debug"
         }
         release {
-            // unsigned when no keystore is configured (e.g. F-Droid signs itself)
-            val release = signingConfigs.getByName("release")
-            signingConfig = if (release.storeFile != null) release else null
+            // unsigned when no keystore is configured (e.g. F-Droid signs itself).
+            // Keep this a single token: F-Droid strips the line and the block above.
+            signingConfig = signingConfigs.findByName("release")
         }
     }
 
