@@ -1,0 +1,1 @@
+Technical change for F-Droid: new version codes per CPU type and a pinned Flutter version. Nothing changes in the app itself.

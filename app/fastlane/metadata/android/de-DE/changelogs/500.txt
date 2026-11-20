@@ -1,0 +1,1 @@
+Technische Umstellung für F-Droid: neue Versionsnummern je Prozessortyp und eine fest hinterlegte Flutter-Version. In der App selbst ändert sich nichts.
